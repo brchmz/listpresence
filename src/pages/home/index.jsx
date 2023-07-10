@@ -3,8 +3,8 @@ import { Card } from "../../components/card";
 import "./styles.css";
 
 export function Home() {
-  const [studentName, setStudentName] = useState();
-  const [students, setStudents] = useState();
+  const [studentName, setStudentName] = useState("");
+  const [students, setStudents] = useState([]);
   const [user, setUser] = useState({ name: "", avatar: "" });
 
   function handleAddStudent() {
@@ -17,6 +17,7 @@ export function Home() {
       }),
     };
     setStudents((prevState) => [...prevState, newStudent]);
+    setStudentName("");
   }
 
   useEffect(() => {
@@ -43,6 +44,7 @@ export function Home() {
       <input
         type="text"
         placeholder="Digite seu nome"
+        value={studentName}
         onChange={(e) => setStudentName(e.target.value)}
       />
       <button type="submit" onClick={handleAddStudent}>
@@ -58,4 +60,3 @@ export function Home() {
     </div>
   );
 }
-// teste
